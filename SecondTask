@@ -1,0 +1,68 @@
+open class Animal(name: String) {
+    var name: String = name
+
+    fun makeSound() {
+        println("Animal makes a sound")
+    }
+}
+
+class Dog(name: String, var breed: String) : Animal(name) {
+    override fun makeSound() {
+        println("Woof woof!")
+    }
+
+    fun fetch() {
+        println("$name is fetching!")
+    }
+}
+
+class Cat(name: String, var color: String) : Animal(name) {
+    override fun makeSound() {
+        println("Meow!")
+    }
+
+    fun scratch() {
+        println("$name is scratching!")
+    }
+}
+
+fun main() {
+    val dog = Dog("Buddy", "Labrador")
+    dog.makeSound()
+    dog.fetch()
+
+    val cat = Cat("Whiskers", "Gray")
+    cat.makeSound()
+    cat.scratch()
+
+    val animals = listOf(
+        Animal("Rex"),
+        Dog("Max", "Golden Retriever"),
+        Cat("Mittens", "Black")
+    )
+
+    animals.forEach {
+        it.makeSound()
+        it.fetch()
+        it.scratch()
+    }
+
+    val dogs = listOf(
+        Dog("Max", "Golden Retriever"),
+        Dog("Amy", "Corgi"),
+    )
+    val retrievers = getRetrievers(dogs)
+    retrievers.forEach {
+        it.fetch()
+    }
+}
+
+fun getRetrievers(dogs: List<Dog>): List<Dog> {
+    var retrievers = listOf<Dog>()
+    for (dog in dogs) {
+        if (dog.breed.contains("Retriever")) {
+            retrievers.add(dog)
+        }
+    }
+    return retrievers
+}

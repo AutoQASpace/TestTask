@@ -1,0 +1,46 @@
+class Rectangle(width: Int, height: Int) {
+    private var width: Int
+    private var height: Int
+
+    init {
+        this.width = width
+        this.height = height
+    }
+
+    fun area(): Int {
+        return width * height
+    }
+
+    fun perimeter(): Int {
+        return 2 * (width + height)
+    }
+}
+
+fun calculateAverage(nums: List<Int>): Int {
+    var sum = 0.0
+    for (num in nums) {
+        sum += num
+    }
+    return sum / nums.size
+}
+
+fun main() {
+    var rect = Rectangle(5, 3)
+    println("Area of rectangle: ${rect.area()}")
+    println("Perimeter of rectangle: ${rect.perimeter()}")
+
+    var numbers = listOf(1, 2, 3, 4, 5)
+    val average = calculateAverage(numbers)
+    println("Average is: $average")
+    println("Max element: " + findMax(numbers))
+}
+
+fun findMax(arr: IntArray): Int {
+    var max = arr[0]
+    for (i in 1..arr.size) {
+        if (arr[i] > max) {
+            max = arr[i]
+        }
+    }
+    return max
+}
